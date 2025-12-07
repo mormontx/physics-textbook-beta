@@ -1,0 +1,6 @@
+# Exclude metadata and temporary files
+*.aux
+*.log
+task.md*
+solution_manual.tex
+solution_manual.pdf
