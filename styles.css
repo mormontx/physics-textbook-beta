@@ -80,7 +80,7 @@ body {
 .sidebar-header {
     padding: var(--spacing-xl) var(--spacing-lg);
     border-bottom: 1px solid var(--border-color);
-    background: url('../85eb9dca-f06f-4658-a3d2-f2c01d01210c/galaxy_stars_header_1765147041810.png') center/cover, var(--primary-color);
+    background: url('galaxy_stars_header_1765147041810.png') center/cover, var(--primary-color);
     background-size: cover;
     background-position: center;
     color: white;
