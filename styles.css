@@ -70,7 +70,7 @@ body {
    =========================== */
 .sidebar {
     width: var(--sidebar-width);
-    background-color: #fef5f3;
+    background: url('sidebar_bg.jpg') center/cover no-repeat;
     border-right: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
@@ -354,7 +354,7 @@ body {
 .reflection-questions {
     margin-top: var(--spacing-xl);
     padding: var(--spacing-lg);
-    background-color: #fef5f3;
+    background: url('sidebar_bg.jpg') center/cover no-repeat;
     border-radius: 8px;
 }
 
