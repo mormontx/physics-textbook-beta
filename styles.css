@@ -877,22 +877,22 @@ body {
     font-size: 0.65rem;
     font-weight: 700;
     color: #fff;
-    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    background: linear-gradient(135deg, #b19cd9, #9370db);
     border-radius: 3px;
     margin-left: 0.5rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     vertical-align: middle;
-    box-shadow: 0 1px 3px rgba(238, 90, 36, 0.3);
+    box-shadow: 0 1px 3px rgba(147, 112, 219, 0.3);
 }
 
 .hl-note {
-    color: #ee5a24;
+    color: #9370db;
     font-weight: 600;
     font-style: italic;
     margin-bottom: 1rem;
     padding: 0.5rem 1rem;
-    background: linear-gradient(135deg, rgba(238, 90, 36, 0.1), rgba(255, 107, 107, 0.1));
-    border-left: 3px solid #ee5a24;
+    background: linear-gradient(135deg, rgba(147, 112, 219, 0.1), rgba(177, 156, 217, 0.1));
+    border-left: 3px solid #9370db;
     border-radius: 4px;
 }
