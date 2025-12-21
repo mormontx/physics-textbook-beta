@@ -1,0 +1,58 @@
+{
+  "coreThemes": [
+    {
+      "id": "A",
+      "title": "A. Space, Time and Motion",
+      "topics": [
+        { "id": "kinematics", "title": "Kinematics" },
+        { "id": "forces-momentum", "title": "Forces and momentum" },
+        { "id": "work-energy-power", "title": "Work, energy and power" },
+        { "id": "rigid-body-mechanics", "title": "Rigid Body Mechanics", "level": "HL" },
+        { "id": "galilean-relativity", "title": "Galilean & Special Relativity", "level": "HL" }
+      ]
+    },
+    {
+      "id": "B",
+      "title": "B. The Particulate Nature of Matter / Thermal physics",
+      "topics": [
+        { "id": "thermal-energy-transfers", "title": "Thermal Energy Transfers" },
+        { "id": "greenhouse-effect", "title": "The Greenhouse Effect" },
+        { "id": "gas-laws", "title": "Gas laws" },
+        { "id": "thermodynamics", "title": "Thermodynamics", "level": "HL" },
+        { "id": "current-circuits", "title": "Current and circuits" }
+      ]
+    },
+    {
+      "id": "C",
+      "title": "C. Wave Behaviour",
+      "topics": [
+        { "id": "simple-harmonic-motion", "title": "Simple harmonic motion", "level": "HL" },
+        { "id": "wave-model", "title": "Wave model" },
+        { "id": "wave-phenomenon", "title": "Wave phenomenon" },
+        { "id": "standing-waves-resonance", "title": "Standing waves and resonance" },
+        { "id": "doppler-effect", "title": "Doppler effect", "level": "HL" }
+      ]
+    },
+    {
+      "id": "D",
+      "title": "D. Fields",
+      "topics": [
+        { "id": "gravitational-fields", "title": "Gravitational Fields", "level": "HL" },
+        { "id": "electric-magnetic-fields", "title": "Electric and magnetic fields", "level": "HL" },
+        { "id": "motion-em-fields", "title": "Motion in electromagnetic fields" },
+        { "id": "induction", "title": "Induction" }
+      ]
+    },
+    {
+      "id": "E",
+      "title": "E. Nuclear and quantum physics",
+      "topics": [
+        { "id": "structure-atom", "title": "Structure of the atom", "level": "HL" },
+        { "id": "quantum-physics", "title": "Quantum physics", "level": "HL" },
+        { "id": "radioactive-decay", "title": "Radioactive decay", "level": "HL" },
+        { "id": "fission", "title": "Fission" },
+        { "id": "fusion-stars", "title": "Fusion and stars" }
+      ]
+    }
+  ]
+}

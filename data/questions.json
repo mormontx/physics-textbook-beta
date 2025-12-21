@@ -1,0 +1,68 @@
+{
+  "questions": {
+    "kinematics": [
+      {
+        "text": "Why do we need the concept of speed? Where does it come from?",
+        "hint": "Think about what question speed answers. How else could you describe an object's motion?"
+      },
+      {
+        "text": "What's the difference between speed and velocity? Why does direction matter?",
+        "hint": "Consider two cars traveling at 60 mph - one north, one south. Are they moving the same way?"
+      },
+      {
+        "text": "Why is acceleration the 'rate of change of velocity'? What does this mean intuitively?",
+        "hint": "Think about what changes when you press the gas pedal or brake pedal in a car."
+      },
+      {
+        "text": "If I drop two objects simultaneously from the same height, why do they hit the ground at the same time regardless of mass (ignoring air resistance)?",
+        "hint": "Consider Newton's second law and how gravity affects different masses."
+      }
+    ],
+    "forces-momentum": [
+      {
+        "text": "What does it really mean that 'an object in motion stays in motion'? Why doesn't everything around us just keep moving forever?",
+        "hint": "Consider what forces act on everyday objects like a rolling ball or a moving car."
+      },
+      {
+        "text": "If F=ma, why does a heavy box feel harder to push than a light box?",
+        "hint": "To achieve the same acceleration, what must change in the equation?"
+      },
+      {
+        "text": "When you push on a wall, the wall pushes back with equal force (Newton's 3rd law). So why don't you move?",
+        "hint": "Consider what other forces are acting on you, like friction with the ground."
+      },
+      {
+        "text": "Why can a rocket work in space where there's nothing to 'push against'?",
+        "hint": "Think about action-reaction pairs. What is the rocket pushing?"
+      }
+    ],
+    "work-energy-power": [
+      {
+        "text": "What IS energy? Why is it useful to have this concept?",
+        "hint": "Think about what's conserved when a ball bounces, when you climb stairs, or when a car brakes."
+      },
+      {
+        "text": "Why do we say energy is 'conserved' when a bouncing ball clearly loses energy and stops bouncing?",
+        "hint": "Where does the energy go? Is it destroyed or transformed?"
+      },
+      {
+        "text": "How can potential energy exist 'in' an object? Is it really stored there?",
+        "hint": "Consider the relationship between the object and Earth. Could potential energy exist for a single object alone in space?"
+      }
+    ],
+    "electric-magnetic-fields": [
+      {
+        "text": "What IS an electric field? Is it real or just a mathematical tool?",
+        "hint": "Think about the space around a charge. How does another charge 'know' to experience a force?"
+      },
+      {
+        "text": "Why do we use the concept of 'field' at all? Why not just talk about forces between charges?",
+        "hint": "Consider situations with many charges, or when we don't know all the charges present."
+      },
+      {
+        "text": "What does it mean that electric field points 'away from' positive charges and 'toward' negative charges?",
+        "hint": "Think about what would happen to a positive test charge placed in the field."
+      }
+    ]
+  }
+}
