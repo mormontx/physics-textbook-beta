@@ -1,0 +1,79 @@
+{
+  "levels": {
+    "baby": {
+      "title": "Baby",
+      "icon": "👶",
+      "color": "#ff6b6b",
+      "quotes": [
+        "Every monster started somewhere. Keep training!",
+        "The path to mastery begins with a single step.",
+        "Don't give up! Even Newton made mistakes."
+      ]
+    },
+    "toddler": {
+      "title": "Toddler", 
+      "icon": "🧒",
+      "color": "#ffa94d",
+      "quotes": [
+        "You're getting there! Keep pushing forward.",
+        "Progress detected! The physics is starting to click.",
+        "Not bad! A few more rounds and you'll level up."
+      ]
+    },
+    "grown": {
+      "title": "Grown",
+      "icon": "🧑",
+      "color": "#ffd43b",
+      "quotes": [
+        "Solid performance! You know your physics.",
+        "Well done! You're becoming dangerous.",
+        "Nice work! The arena respects your skills."
+      ]
+    },
+    "adept": {
+      "title": "Adept",
+      "icon": "🧙",
+      "color": "#69db7c",
+      "quotes": [
+        "IMPRESSIVE! One step away from Monster!",
+        "The force is strong with you!",
+        "Almost perfect! Monster status awaits!"
+      ]
+    },
+    "monster": {
+      "title": "MONSTER",
+      "icon": "🦖",
+      "color": "#4dabf7",
+      "quotes": [
+        "UNSTOPPABLE! You've conquered this arena!",
+        "GODLIKE! Even the equations fear you!",
+        "PERFECT! You are the Physics Monster!",
+        "LEGENDARY! Newton would be proud!"
+      ]
+    }
+  },
+  "correct_reactions": [
+    "Nice!",
+    "Correct!",
+    "Excellent!",
+    "Perfect!",
+    "IMPRESSIVE!"
+  ],
+  "incorrect_reactions": [
+    "Not quite...",
+    "Tricky one!",
+    "Common trap!",
+    "Review this concept!",
+    "Almost!"
+  ],
+  "arena_welcome": [
+    "Welcome to the Arena, challenger!",
+    "Ready to prove yourself?",
+    "The physics gauntlet awaits!"
+  ],
+  "challenge_start": [
+    "FIGHT!",
+    "BEGIN!",
+    "LET'S GO!"
+  ]
+}
