@@ -2,7 +2,7 @@
   "topics": {
     "kinematics": {
       "title": "Kinematics",
-      "icon": "🏃",
+      "icon": "K",
       "questions": [
         {
           "level": 1,
@@ -74,7 +74,7 @@
     },
     "forces": {
       "title": "Forces & Newton's Laws",
-      "icon": "💪",
+      "icon": "F",
       "questions": [
         {
           "level": 1,
@@ -145,7 +145,7 @@
     },
     "work-energy-power": {
       "title": "Work, Energy & Power",
-      "icon": "⚡",
+      "icon": "E",
       "questions": [
         {
           "level": 1,

@@ -2,7 +2,7 @@
   "levels": {
     "baby": {
       "title": "Baby",
-      "icon": "👶",
+      "icon": "1",
       "color": "#ff6b6b",
       "quotes": [
         "Every monster started somewhere. Keep training!",
@@ -12,7 +12,7 @@
     },
     "toddler": {
       "title": "Toddler", 
-      "icon": "🧒",
+      "icon": "2",
       "color": "#ffa94d",
       "quotes": [
         "You're getting there! Keep pushing forward.",
@@ -22,7 +22,7 @@
     },
     "grown": {
       "title": "Grown",
-      "icon": "🧑",
+      "icon": "3",
       "color": "#ffd43b",
       "quotes": [
         "Solid performance! You know your physics.",
@@ -32,7 +32,7 @@
     },
     "adept": {
       "title": "Adept",
-      "icon": "🧙",
+      "icon": "4",
       "color": "#69db7c",
       "quotes": [
         "IMPRESSIVE! One step away from Monster!",
@@ -42,7 +42,7 @@
     },
     "monster": {
       "title": "MONSTER",
-      "icon": "🦖",
+      "icon": "M",
       "color": "#4dabf7",
       "quotes": [
         "UNSTOPPABLE! You've conquered this arena!",

@@ -318,3 +318,494 @@ if (document.readyState === 'loading') {
 } else {
     init();
 }
+
+// ===========================
+// Monster Physics Mode
+// ===========================
+
+// Monster Mode Global State
+let monsterQuestionsData = null;
+let monsterQuotesData = null;
+let currentChallenge = {
+    topicId: null,
+    questions: [],
+    currentIndex: 0,
+    answers: [],
+    correctAnswers: []
+};
+
+// ===========================
+// Monster Data Loading
+// ===========================
+async function loadMonsterQuestionsData() {
+    try {
+        const response = await fetch('data/monster-questions.json');
+        monsterQuestionsData = await response.json();
+        return monsterQuestionsData;
+    } catch (error) {
+        console.error('Error loading monster questions:', error);
+        return null;
+    }
+}
+
+async function loadMonsterQuotesData() {
+    try {
+        const response = await fetch('data/monster-quotes.json');
+        monsterQuotesData = await response.json();
+        return monsterQuotesData;
+    } catch (error) {
+        console.error('Error loading monster quotes:', error);
+        return null;
+    }
+}
+
+// ===========================
+// Tab Navigation
+// ===========================
+function initTabNavigation() {
+    const tabs = document.querySelectorAll('.main-tab');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const view = tab.dataset.view;
+            switchView(view);
+            
+            // Update active tab
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+        });
+    });
+}
+
+function switchView(viewName) {
+    const textbookView = document.getElementById('textbook-view');
+    const monsterView = document.getElementById('monster-view');
+    
+    if (viewName === 'textbook') {
+        textbookView.style.display = 'block';
+        monsterView.style.display = 'none';
+    } else if (viewName === 'monster') {
+        textbookView.style.display = 'none';
+        monsterView.style.display = 'block';
+        initMonsterMode();
+    }
+}
+
+// ===========================
+// Monster Mode Initialization
+// ===========================
+async function initMonsterMode() {
+    // Load data if not already loaded
+    if (!monsterQuestionsData) {
+        await loadMonsterQuestionsData();
+    }
+    if (!monsterQuotesData) {
+        await loadMonsterQuotesData();
+    }
+    
+    // Show arena selection
+    showArenaSelection();
+}
+
+function showArenaSelection() {
+    document.getElementById('arena-selection').style.display = 'block';
+    document.getElementById('challenge-area').style.display = 'none';
+    document.getElementById('report-card').style.display = 'none';
+    
+    renderArenaTopics();
+}
+
+function renderArenaTopics() {
+    const grid = document.getElementById('arena-grid');
+    if (!grid || !monsterQuestionsData) return;
+    
+    grid.innerHTML = '';
+    
+    const topics = monsterQuestionsData.topics;
+    for (const [topicId, topic] of Object.entries(topics)) {
+        const card = document.createElement('div');
+        card.className = 'arena-card';
+        card.innerHTML = `
+            <div class="arena-card-icon">${topic.icon}</div>
+            <div class="arena-card-title">${topic.title}</div>
+            <div class="arena-card-count">${topic.questions.length} questions</div>
+        `;
+        card.onclick = () => startChallenge(topicId);
+        grid.appendChild(card);
+    }
+}
+
+// ===========================
+// Challenge Management
+// ===========================
+function startChallenge(topicId) {
+    const topic = monsterQuestionsData.topics[topicId];
+    if (!topic) return;
+    
+    // Reset challenge state
+    currentChallenge = {
+        topicId: topicId,
+        questions: [],
+        currentIndex: 0,
+        answers: [],
+        correctAnswers: []
+    };
+    
+    // Select 5 random questions (or all if less than 5)
+    const allQuestions = topic.questions;
+    const shuffled = shuffleArray([...allQuestions]);
+    currentChallenge.questions = shuffled.slice(0, 5);
+    
+    // Generate the actual question instances with randomized values
+    currentChallenge.questions = currentChallenge.questions.map(q => generateQuestion(q));
+    
+    // Show challenge area
+    document.getElementById('arena-selection').style.display = 'none';
+    document.getElementById('challenge-area').style.display = 'block';
+    document.getElementById('report-card').style.display = 'none';
+    
+    // Update topic name
+    document.getElementById('challenge-topic').textContent = topic.title;
+    
+    // Reset progress dots
+    resetProgressDots();
+    
+    // Show first question
+    showQuestion(0);
+}
+
+function generateQuestion(template) {
+    const generated = {
+        level: template.level,
+        type: template.type,
+        unit: template.unit || '',
+        trap_explanation: template.trap_explanation || '',
+        originalTemplate: template
+    };
+    
+    // Generate random values for variables
+    const variables = {};
+    if (template.variables) {
+        for (const [key, values] of Object.entries(template.variables)) {
+            if (Array.isArray(values)) {
+                variables[key] = values[Math.floor(Math.random() * values.length)];
+            } else if (values.min !== undefined && values.max !== undefined) {
+                const step = values.step || 1;
+                const range = Math.floor((values.max - values.min) / step) + 1;
+                variables[key] = values.min + (Math.floor(Math.random() * range) * step);
+            }
+        }
+    }
+    generated.variables = variables;
+    
+    // Generate question text
+    let text = template.template;
+    for (const [key, value] of Object.entries(variables)) {
+        text = text.replace(new RegExp(`\\{${key}\\}`, 'g'), value);
+    }
+    generated.text = text;
+    
+    // Calculate correct answer
+    if (template.fixed_answer !== undefined) {
+        generated.correctAnswer = template.fixed_answer;
+    } else if (template.answer_formula) {
+        generated.correctAnswer = calculateAnswer(template.answer_formula, variables);
+    }
+    
+    // Generate answer options for multiple choice
+    if (template.type === 'multiple-choice') {
+        const options = [];
+        
+        // Add correct answer
+        let correctDisplay;
+        if (typeof generated.correctAnswer === 'number') {
+            correctDisplay = `${roundAnswer(generated.correctAnswer)} ${generated.unit}`;
+        } else {
+            correctDisplay = String(generated.correctAnswer).replace(/\{(\w+)\}/g, (_, key) => variables[key]);
+        }
+        options.push({ value: generated.correctAnswer, display: correctDisplay, isCorrect: true });
+        
+        // Generate wrong answers
+        if (template.wrong_formulas) {
+            template.wrong_formulas.forEach(formula => {
+                const wrongValue = calculateAnswer(formula, variables);
+                options.push({ 
+                    value: wrongValue, 
+                    display: `${roundAnswer(wrongValue)} ${generated.unit}`,
+                    isCorrect: false 
+                });
+            });
+        } else if (template.wrong_answers) {
+            template.wrong_answers.forEach(wa => {
+                const display = wa.replace(/\{(\w+)\}/g, (_, key) => variables[key]);
+                options.push({ value: display, display: display, isCorrect: false });
+            });
+        }
+        
+        generated.options = shuffleArray(options);
+    }
+    
+    generated.tolerance = template.tolerance || 0.1;
+    
+    return generated;
+}
+
+function calculateAnswer(formula, variables) {
+    try {
+        // Create a function with the variables in scope
+        const varNames = Object.keys(variables);
+        const varValues = Object.values(variables);
+        const fn = new Function(...varNames, `return ${formula}`);
+        return fn(...varValues);
+    } catch (e) {
+        console.error('Error calculating answer:', e);
+        return 0;
+    }
+}
+
+function roundAnswer(value) {
+    if (typeof value !== 'number') return value;
+    // Round to 2 decimal places
+    return Math.round(value * 100) / 100;
+}
+
+function shuffleArray(array) {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+}
+
+// ===========================
+// Question Display
+// ===========================
+function showQuestion(index) {
+    currentChallenge.currentIndex = index;
+    const question = currentChallenge.questions[index];
+    
+    // Update question number
+    document.getElementById('question-number').textContent = `Question ${index + 1}/5`;
+    
+    // Update difficulty stars
+    const stars = '*'.repeat(question.level);
+    document.getElementById('difficulty-stars').textContent = stars;
+    
+    // Update progress dots
+    updateProgressDots(index);
+    
+    // Display question text
+    document.getElementById('question-text').textContent = question.text;
+    
+    // Render answer area
+    renderAnswerArea(question);
+    
+    // Disable submit button
+    document.getElementById('submit-btn').disabled = true;
+}
+
+function renderAnswerArea(question) {
+    const area = document.getElementById('answer-area');
+    area.innerHTML = '';
+    
+    if (question.type === 'multiple-choice') {
+        question.options.forEach((option, i) => {
+            const btn = document.createElement('button');
+            btn.className = 'answer-option';
+            btn.textContent = option.display;
+            btn.onclick = () => selectAnswer(btn, option);
+            area.appendChild(btn);
+        });
+    } else if (question.type === 'numeric') {
+        const container = document.createElement('div');
+        container.className = 'numeric-input-container';
+        container.innerHTML = `
+            <input type="number" class="numeric-input" id="numeric-answer" step="any" placeholder="?">
+            <span class="numeric-unit">${question.unit}</span>
+        `;
+        area.appendChild(container);
+        
+        // Enable submit when input has value
+        const input = container.querySelector('#numeric-answer');
+        input.addEventListener('input', () => {
+            document.getElementById('submit-btn').disabled = input.value === '';
+        });
+        input.focus();
+    }
+}
+
+function selectAnswer(button, option) {
+    // Remove selection from other buttons
+    document.querySelectorAll('.answer-option').forEach(btn => {
+        btn.classList.remove('selected');
+    });
+    
+    // Select this button
+    button.classList.add('selected');
+    
+    // Store selected answer
+    currentChallenge.selectedAnswer = option;
+    
+    // Enable submit
+    document.getElementById('submit-btn').disabled = false;
+}
+
+function resetProgressDots() {
+    const dots = document.querySelectorAll('.progress-dots .dot');
+    dots.forEach(dot => {
+        dot.classList.remove('answered', 'current', 'correct', 'incorrect');
+    });
+}
+
+function updateProgressDots(currentIndex) {
+    const dots = document.querySelectorAll('.progress-dots .dot');
+    dots.forEach((dot, i) => {
+        dot.classList.remove('current');
+        if (i < currentIndex) {
+            dot.classList.add('answered');
+        }
+        if (i === currentIndex) {
+            dot.classList.add('current');
+        }
+    });
+}
+
+// ===========================
+// Submit and Progress
+// ===========================
+function initSubmitButton() {
+    const submitBtn = document.getElementById('submit-btn');
+    if (submitBtn) {
+        submitBtn.addEventListener('click', submitAnswer);
+    }
+    
+    const backBtn = document.getElementById('back-to-arena');
+    if (backBtn) {
+        backBtn.addEventListener('click', showArenaSelection);
+    }
+}
+
+function submitAnswer() {
+    const question = currentChallenge.questions[currentChallenge.currentIndex];
+    let userAnswer;
+    let isCorrect;
+    
+    if (question.type === 'multiple-choice') {
+        userAnswer = currentChallenge.selectedAnswer;
+        isCorrect = userAnswer && userAnswer.isCorrect;
+    } else if (question.type === 'numeric') {
+        const input = document.getElementById('numeric-answer');
+        userAnswer = parseFloat(input.value);
+        const tolerance = question.tolerance || 0.5;
+        isCorrect = Math.abs(userAnswer - question.correctAnswer) <= tolerance;
+    }
+    
+    // Store answer
+    currentChallenge.answers.push({
+        question: question,
+        userAnswer: userAnswer,
+        isCorrect: isCorrect
+    });
+    
+    // Mark dot
+    const dots = document.querySelectorAll('.progress-dots .dot');
+    dots[currentChallenge.currentIndex].classList.add('answered');
+    
+    // Move to next question or show report
+    if (currentChallenge.currentIndex < currentChallenge.questions.length - 1) {
+        currentChallenge.selectedAnswer = null;
+        showQuestion(currentChallenge.currentIndex + 1);
+    } else {
+        showReportCard();
+    }
+}
+
+// ===========================
+// Report Card
+// ===========================
+function showReportCard() {
+    document.getElementById('arena-selection').style.display = 'none';
+    document.getElementById('challenge-area').style.display = 'none';
+    document.getElementById('report-card').style.display = 'block';
+    
+    const correctCount = currentChallenge.answers.filter(a => a.isCorrect).length;
+    const total = currentChallenge.answers.length;
+    
+    // Determine level
+    const level = determineLevel(correctCount);
+    const levelData = monsterQuotesData.levels[level];
+    
+    // Update display
+    document.getElementById('level-icon').textContent = levelData.icon;
+    document.getElementById('level-title').textContent = levelData.title;
+    document.getElementById('report-level').setAttribute('data-level', level);
+    
+    document.getElementById('report-score').textContent = `${correctCount}/${total}`;
+    
+    // Random quote
+    const quotes = levelData.quotes;
+    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    document.getElementById('report-quote').textContent = randomQuote;
+    
+    // Render breakdown
+    renderBreakdown();
+}
+
+function determineLevel(correctCount) {
+    if (correctCount === 5) return 'monster';
+    if (correctCount === 4) return 'adept';
+    if (correctCount === 3) return 'grown';
+    if (correctCount === 2) return 'toddler';
+    return 'baby';
+}
+
+function renderBreakdown() {
+    const breakdown = document.getElementById('report-breakdown');
+    breakdown.innerHTML = '';
+    
+    currentChallenge.answers.forEach((answer, i) => {
+        const item = document.createElement('div');
+        item.className = `breakdown-item ${answer.isCorrect ? 'correct' : 'incorrect'}`;
+        
+        let userAnswerDisplay = '';
+        if (answer.question.type === 'multiple-choice') {
+            userAnswerDisplay = answer.userAnswer ? answer.userAnswer.display : 'No answer';
+        } else {
+            userAnswerDisplay = `${answer.userAnswer} ${answer.question.unit}`;
+        }
+        
+        let correctAnswerDisplay = '';
+        if (answer.question.type === 'multiple-choice') {
+            const correctOption = answer.question.options.find(o => o.isCorrect);
+            correctAnswerDisplay = correctOption ? correctOption.display : '';
+        } else {
+            correctAnswerDisplay = `${roundAnswer(answer.question.correctAnswer)} ${answer.question.unit}`;
+        }
+        
+        item.innerHTML = `
+            <div class="breakdown-question">Q${i + 1}: ${answer.question.text}</div>
+            <div class="breakdown-answer user-answer">Your answer: ${userAnswerDisplay}</div>
+            ${!answer.isCorrect ? `<div class="breakdown-answer correct-answer">Correct: ${correctAnswerDisplay}</div>` : ''}
+            ${answer.question.trap_explanation ? `<div class="breakdown-explanation">Tip: ${answer.question.trap_explanation}</div>` : ''}
+        `;
+        
+        breakdown.appendChild(item);
+    });
+}
+
+// ===========================
+// Update Init Function
+// ===========================
+const originalInit = init;
+init = async function() {
+    // Call original init
+    await originalInit.call(this);
+    
+    // Initialize Monster Mode
+    initTabNavigation();
+    initSubmitButton();
+    
+    // Load monster data in background
+    loadMonsterQuestionsData();
+    loadMonsterQuotesData();
+};
