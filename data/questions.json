@@ -1,68 +1,348 @@
 {
-  "questions": {
-    "kinematics": [
-      {
-        "text": "Why do we need the concept of speed? Where does it come from?",
-        "hint": "Think about what question speed answers. How else could you describe an object's motion?"
-      },
-      {
-        "text": "What's the difference between speed and velocity? Why does direction matter?",
-        "hint": "Consider two cars traveling at 60 mph - one north, one south. Are they moving the same way?"
-      },
-      {
-        "text": "Why is acceleration the 'rate of change of velocity'? What does this mean intuitively?",
-        "hint": "Think about what changes when you press the gas pedal or brake pedal in a car."
-      },
-      {
-        "text": "If I drop two objects simultaneously from the same height, why do they hit the ground at the same time regardless of mass (ignoring air resistance)?",
-        "hint": "Consider Newton's second law and how gravity affects different masses."
-      }
-    ],
-    "forces-momentum": [
-      {
-        "text": "What does it really mean that 'an object in motion stays in motion'? Why doesn't everything around us just keep moving forever?",
-        "hint": "Consider what forces act on everyday objects like a rolling ball or a moving car."
-      },
-      {
-        "text": "If F=ma, why does a heavy box feel harder to push than a light box?",
-        "hint": "To achieve the same acceleration, what must change in the equation?"
-      },
-      {
-        "text": "When you push on a wall, the wall pushes back with equal force (Newton's 3rd law). So why don't you move?",
-        "hint": "Consider what other forces are acting on you, like friction with the ground."
-      },
-      {
-        "text": "Why can a rocket work in space where there's nothing to 'push against'?",
-        "hint": "Think about action-reaction pairs. What is the rocket pushing?"
-      }
-    ],
-    "work-energy-power": [
-      {
-        "text": "What IS energy? Why is it useful to have this concept?",
-        "hint": "Think about what's conserved when a ball bounces, when you climb stairs, or when a car brakes."
-      },
-      {
-        "text": "Why do we say energy is 'conserved' when a bouncing ball clearly loses energy and stops bouncing?",
-        "hint": "Where does the energy go? Is it destroyed or transformed?"
-      },
-      {
-        "text": "How can potential energy exist 'in' an object? Is it really stored there?",
-        "hint": "Consider the relationship between the object and Earth. Could potential energy exist for a single object alone in space?"
-      }
-    ],
-    "electric-magnetic-fields": [
-      {
-        "text": "What IS an electric field? Is it real or just a mathematical tool?",
-        "hint": "Think about the space around a charge. How does another charge 'know' to experience a force?"
-      },
-      {
-        "text": "Why do we use the concept of 'field' at all? Why not just talk about forces between charges?",
-        "hint": "Consider situations with many charges, or when we don't know all the charges present."
-      },
-      {
-        "text": "What does it mean that electric field points 'away from' positive charges and 'toward' negative charges?",
-        "hint": "Think about what would happen to a positive test charge placed in the field."
-      }
-    ]
-  }
+    "questions": {
+        "kinematics": [
+            {
+                "text": "Why do we need the concept of speed? Where does it come from?",
+                "hint": "Think about what question speed answers. How else could you describe an object's motion?"
+            },
+            {
+                "text": "What's the difference between speed and velocity? Why does direction matter?",
+                "hint": "Consider two cars traveling at 60 mph - one north, one south. Are they moving the same way?"
+            },
+            {
+                "text": "Why is acceleration the 'rate of change of velocity'? What does this mean intuitively?",
+                "hint": "Think about what changes when you press the gas pedal or brake pedal in a car."
+            },
+            {
+                "text": "If I drop two objects simultaneously from the same height, why do they hit the ground at the same time regardless of mass (ignoring air resistance)?",
+                "hint": "Consider Newton's second law and how gravity affects different masses."
+            }
+        ],
+        "forces-momentum": [
+            {
+                "text": "What does it really mean that 'an object in motion stays in motion'? Why doesn't everything around us just keep moving forever?",
+                "hint": "Consider what forces act on everyday objects like a rolling ball or a moving car."
+            },
+            {
+                "text": "If F=ma, why does a heavy box feel harder to push than a light box?",
+                "hint": "To achieve the same acceleration, what must change in the equation?"
+            },
+            {
+                "text": "When you push on a wall, the wall pushes back with equal force (Newton's 3rd law). So why don't you move?",
+                "hint": "Consider what other forces are acting on you, like friction with the ground."
+            },
+            {
+                "text": "Why can a rocket work in space where there's nothing to 'push against'?",
+                "hint": "Think about action-reaction pairs. What is the rocket pushing?"
+            }
+        ],
+        "work-energy-power": [
+            {
+                "text": "What IS energy? Why is it useful to have this concept?",
+                "hint": "Think about what's conserved when a ball bounces, when you climb stairs, or when a car brakes."
+            },
+            {
+                "text": "Why do we say energy is 'conserved' when a bouncing ball clearly loses energy and stops bouncing?",
+                "hint": "Where does the energy go? Is it destroyed or transformed?"
+            },
+            {
+                "text": "How can potential energy exist 'in' an object? Is it really stored there?",
+                "hint": "Consider the relationship between the object and Earth. Could potential energy exist for a single object alone in space?"
+            }
+        ],
+        "rigid-body-mechanics": [
+            {
+                "text": "Why is it harder to open a door by pushing near the hinges compared to the handle?",
+                "hint": "Think about the concept of torque and the lever arm distance."
+            },
+            {
+                "text": "What does moment of inertia represent for rotation compared to mass for linear motion?",
+                "hint": "Consider how distribution of mass affects resistance to rotational change."
+            },
+            {
+                "text": "Why does a spinning ice skater spin faster when they pull their arms in?",
+                "hint": "Think about conservation of angular momentum and how changing the radius affects velocity."
+            }
+        ],
+        "galilean-relativity": [
+            {
+                "text": "If you drop a ball inside a moving train, where does it land relative to you? What about relative to someone outside?",
+                "hint": "Think about the initial horizontal velocity of the ball."
+            },
+            {
+                "text": "Why do the laws of physics appear the same in all inertial frames of reference?",
+                "hint": "Consider if you could perform an experiment to determine if you are moving at a constant velocity without looking outside."
+            },
+            {
+                "text": "What happens to time and length as you approach the speed of light in Special Relativity?",
+                "hint": "Think about time dilation and length contraction effects."
+            }
+        ],
+        "thermal-energy-transfers": [
+            {
+                "text": "Why does metal feel colder than wood at the same room temperature?",
+                "hint": "Think about thermal conductivity and how fast heat leaves your hand."
+            },
+            {
+                "text": "How does a thermos keep hot coffee hot and cold water cold?",
+                "hint": "Consider the three modes of heat transfer: conduction, convection, and radiation."
+            },
+            {
+                "text": "Why does sweating cool you down?",
+                "hint": "Think about the energy required for phase change from liquid to gas."
+            }
+        ],
+        "greenhouse-effect": [
+            {
+                "text": "Why doesn't the Earth just keep getting hotter if the Sun is constantly heating it?",
+                "hint": "Think about energy balance: energy in versus energy out."
+            },
+            {
+                "text": "How do greenhouse gases actually 'trap' heat? Do they stop it from leaving?",
+                "hint": "Consider absorption and re-emission of infrared radiation."
+            },
+            {
+                "text": "Is the greenhouse effect always bad? What would Earth be like without it?",
+                "hint": "Compare Earth's average temperature to the Moon's."
+            }
+        ],
+        "gas-laws": [
+            {
+                "text": "Why does a balloon shrink when you put it in the freezer?",
+                "hint": "Think about the motion of gas molecules and how temperature affects their speed."
+            },
+            {
+                "text": "Why does the pressure in a tire increase after driving on a hot day?",
+                "hint": "Consider the relationship between temperature and pressure at constant volume."
+            },
+            {
+                "text": "What defines an 'ideal' gas? When do real gases fail to behave ideally?",
+                "hint": "Think about assumptions regarding particle volume and intermolecular forces."
+            }
+        ],
+        "thermodynamics": [
+            {
+                "text": "Can you build an engine that is 100% efficient? Why or why not?",
+                "hint": "Consider the Second Law of Thermodynamics and entropy."
+            },
+            {
+                "text": "What does entropy really measure? Is it just disorder?",
+                "hint": "Think about the number of possible microstates for a given macrostate."
+            },
+            {
+                "text": "Why does heat naturally flow from hot to cold?",
+                "hint": "Think about probability and the statistical nature of particle collisions."
+            }
+        ],
+        "current-circuits": [
+            {
+                "text": "Does a battery run out of electrons?",
+                "hint": "Think about what a battery actually provides to the circuit (energy, not charge)."
+            },
+            {
+                "text": "Why do lights in a house turn on instantly if electrons move very slowly (drift velocity)?",
+                "hint": "Think about a line of marbles or water in a pipe. When you push one end, how fast does the other end move?"
+            },
+            {
+                "text": "Why is it safer to touch a 10,000V Van de Graaff generator than a 120V wall outlet?",
+                "hint": "Consider current and the total amount of energy involved."
+            }
+        ],
+        "simple-harmonic-motion": [
+            {
+                "text": "What makes a motion 'simple harmonic' effectively?",
+                "hint": "Think about the restoring force and its relationship to displacement."
+            },
+            {
+                "text": "Why doesn't the period of a pendulum depend on its mass?",
+                "hint": "Consider how mass affects both the restoring force (gravity) and inertia."
+            },
+            {
+                "text": "What is the relationship between position, velocity, and acceleration in SHM?",
+                "hint": "Think about the phase differences. When is velocity max? When is acceleration max?"
+            }
+        ],
+        "wave-model": [
+            {
+                "text": "Do waves transport matter? What actually moves across the ocean?",
+                "hint": "Observe a floating object as a wave passes by."
+            },
+            {
+                "text": "What determines the speed of a wave? Frequency, wavelength, or the medium?",
+                "hint": "Think about why sound travels faster in water than in air."
+            },
+            {
+                "text": "What is the difference between transverse and longitudinal waves?",
+                "hint": "Consider the direction of particle oscillation relative to wave propagation."
+            }
+        ],
+        "wave-phenomenon": [
+            {
+                "text": "Why does a straw look bent in a glass of water?",
+                "hint": "Think about refraction and the speed of light in different media."
+            },
+            {
+                "text": "How can sound be heard around a corner, but light cannot be seen around a corner?",
+                "hint": "Consider diffraction and its relationship to wavelength."
+            },
+            {
+                "text": "Why do soap bubbles have colorful swirls?",
+                "hint": "Think about thin-film interference."
+            }
+        ],
+        "standing-waves-resonance": [
+            {
+                "text": "How do standing waves differ from traveling waves? What is actually 'moving' in a standing wave?",
+                "hint": "Think about energy transport versus energy storage."
+            },
+            {
+                "text": "What conditions are necessary for resonance to occur? Why is it sometimes dangerous for bridges or buildings?",
+                "hint": "Consider the relationship between the driving frequency and the object's natural frequency."
+            },
+            {
+                "text": "In a standing wave on a string, why are there points (nodes) that never move, even though the string is vibrating?",
+                "hint": "Think about the interference of two waves traveling in opposite directions."
+            }
+        ],
+        "doppler-effect": [
+            {
+                "text": "Why does a siren sound higher pitched when approaching and lower when receding?",
+                "hint": "Think about how the wavefronts are compressed or stretched by the motion."
+            },
+            {
+                "text": "Does the driver of the firetruck hear the Doppler shift of their own siren?",
+                "hint": "Consider the relative velocity between the source and the observer."
+            },
+            {
+                "text": "How is the Doppler effect used in astronomy?",
+                "hint": "Think about 'redshift' and 'blueshift' of light from stars."
+            }
+        ],
+        "gravitational-fields": [
+            {
+                "text": "If gravity is a force of attraction, why doesn't the Moon crash into the Earth?",
+                "hint": "Think about the moon's tangential velocity and projectile motion."
+            },
+            {
+                "text": "What does it mean to be 'weightless' in orbit? Is there no gravity?",
+                "hint": "Consider the difference between weight and the sensation of weight (normal force)."
+            },
+            {
+                "text": "Why do we treat satellites as 'falling' around the Earth?",
+                "hint": "Think about the curvature of the Earth and the path of the satellite."
+            }
+        ],
+        "electric-magnetic-fields": [
+            {
+                "text": "What IS an electric field? Is it real or just a mathematical tool?",
+                "hint": "Think about the space around a charge. How does another charge 'know' to experience a force?"
+            },
+            {
+                "text": "Why do we use the concept of 'field' at all? Why not just talk about forces between charges?",
+                "hint": "Consider situations with many charges, or when we don't know all the charges present."
+            },
+            {
+                "text": "What does it mean that electric field points 'away from' positive charges and 'toward' negative charges?",
+                "hint": "Think about what would happen to a positive test charge placed in the field."
+            }
+        ],
+        "motion-em-fields": [
+            {
+                "text": "Why does a charged particle move in a circle in a magnetic field?",
+                "hint": "Consider the direction of the magnetic force relative to the velocity."
+            },
+            {
+                "text": "How does a cyclotron accelerate particles if the magnetic field does no work?",
+                "hint": "Think about what actually increases the speed versus what changes the direction."
+            },
+            {
+                "text": "Why don't neutral particles experience a magnetic force?",
+                "hint": "Consider the Lorentz force equation."
+            }
+        ],
+        "induction": [
+            {
+                "text": "How can a changing magnetic field create an electric current? Where does the energy come from?",
+                "hint": "Think about the work done to move the magnet or change the field."
+            },
+            {
+                "text": "Why does the current induced always oppose the change that produced it (Lenz's Law)?",
+                "hint": "Consider conservation of energy. What would happen if it aided the change?"
+            },
+            {
+                "text": "How does a transformer work? Can it work with DC current?",
+                "hint": "Think about the need for a *changing* magnetic flux."
+            }
+        ],
+        "structure-atom": [
+            {
+                "text": "Why didn't electrons just spiral into the nucleus in the classical model?",
+                "hint": "Think about the problem of accelerating charges radiating energy."
+            },
+            {
+                "text": "What evidence proved the existence of a small, dense nucleus?",
+                "hint": "Review the Rutherford gold foil experiment results."
+            },
+            {
+                "text": "Why are atomic spectra (colors of light emitted) discrete lines instead of a continuous rainbow?",
+                "hint": "Think about electron energy levels and quantum jumps."
+            }
+        ],
+        "quantum-physics": [
+            {
+                "text": "Is light a wave or a particle? What experiments support each view?",
+                "hint": "Compare the photoelectric effect with the double-slit experiment."
+            },
+            {
+                "text": "What does the Heisenberg Uncertainty Principle really mean? Is it just a measurement problem?",
+                "hint": "Consider the fundamental nature of wave-particles, not just clumsy instruments."
+            },
+            {
+                "text": "What is a photon?",
+                "hint": "Think of it as a 'packet' or quantum of electromagnetic energy."
+            }
+        ],
+        "radioactive-decay": [
+            {
+                "text": "Why does radioactive decay happen randomly? Can we predict when a specific atom will decay?",
+                "hint": "Think about the probabilistic nature of quantum mechanics."
+            },
+            {
+                "text": "What is a 'half-life'? Does it mean the substance is gone after two half-lives?",
+                "hint": "Consider the mathematical nature of exponential decay."
+            },
+            {
+                "text": "Why are some isotopes stable while others are radioactive?",
+                "hint": "Think about the balance of forces (strong nuclear vs electric) in the nucleus."
+            }
+        ],
+        "fission": [
+            {
+                "text": "Where does the energy in nuclear fission come from?",
+                "hint": "Think about binding energy per nucleon and mass defect (E=mc^2)."
+            },
+            {
+                "text": "What is a chain reaction? Why is 'critical mass' needed?",
+                "hint": "Consider neutrons produced vs. neutrons lost."
+            },
+            {
+                "text": "Why is nuclear waste dangerous for so long?",
+                "hint": "Think about the half-lives of the fission products."
+            }
+        ],
+        "fusion-stars": [
+            {
+                "text": "Why is fusion so hard to achieve on Earth compared to fission?",
+                "hint": "Think about the conditions needed to force positive nuclei together."
+            },
+            {
+                "text": "How does the Sun keep burning for billions of years without running out of fuel?",
+                "hint": "Consider the vast mass of the Sun and the efficiency of fusion."
+            },
+            {
+                "text": "Why are heavier elements like gold only formed in supernovae?",
+                "hint": "Think about the energy required to fuse elements heavier than iron."
+            }
+        ]
+    }
 }
