@@ -958,48 +958,52 @@ body {
    Monster Mode - Quake Arena Theme
    =========================== */
 .monster-mode {
-    background: 
-        linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%),
-        url('galaxy_background.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%);
     min-height: 100%;
     position: relative;
     overflow-y: auto;
 }
 
-/* Additional stars overlay */
+/* Toxic green corner accents - matching textbook style */
 .monster-mode::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-        radial-gradient(2px 2px at 20px 30px, white, transparent),
-        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
-        radial-gradient(1px 1px at 90px 40px, white, transparent),
-        radial-gradient(2px 2px at 130px 80px, rgba(255,255,255,0.6), transparent),
-        radial-gradient(1px 1px at 160px 120px, white, transparent),
-        radial-gradient(2px 2px at 200px 50px, rgba(255,255,255,0.9), transparent),
-        radial-gradient(1px 1px at 250px 160px, white, transparent),
-        radial-gradient(2px 2px at 300px 100px, rgba(255,255,255,0.7), transparent),
-        radial-gradient(1px 1px at 350px 200px, white, transparent),
-        radial-gradient(2px 2px at 400px 60px, rgba(255,255,255,0.8), transparent),
-        radial-gradient(1px 1px at 450px 180px, white, transparent),
-        radial-gradient(2px 2px at 500px 140px, rgba(255,255,255,0.6), transparent);
-    background-size: 550px 250px;
-    background-repeat: repeat;
-    opacity: 0.5;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(ellipse at top left, rgba(57, 255, 20, 0.15) 0%, rgba(57, 255, 20, 0.05) 40%, transparent 70%);
     pointer-events: none;
-    animation: twinkle 4s ease-in-out infinite alternate;
 }
 
-@keyframes twinkle {
-    0% { opacity: 0.3; }
-    100% { opacity: 0.6; }
+.monster-mode .corner-accent-tr {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(ellipse at top right, rgba(57, 255, 20, 0.12) 0%, rgba(57, 255, 20, 0.04) 40%, transparent 70%);
+    pointer-events: none;
+}
+
+.monster-mode .corner-accent-bl {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(ellipse at bottom left, rgba(57, 255, 20, 0.1) 0%, rgba(57, 255, 20, 0.03) 40%, transparent 70%);
+    pointer-events: none;
+}
+
+.monster-mode .corner-accent-br {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(ellipse at bottom right, rgba(57, 255, 20, 0.13) 0%, rgba(57, 255, 20, 0.05) 40%, transparent 70%);
+    pointer-events: none;
 }
 
 .monster-mode::after {
@@ -1009,8 +1013,8 @@ body {
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, transparent, #c8a2c8, transparent);
-    box-shadow: 0 0 20px #c8a2c8, 0 0 40px rgba(200, 162, 200, 0.5);
+    background: linear-gradient(90deg, transparent, #39ff14, transparent);
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
 }
 
 .monster-container {
@@ -1052,136 +1056,27 @@ body {
 }
 
 .title-physics {
-    color: #ffffff;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    color: #2a2a2a;
+    text-shadow: 0 0 15px rgba(42, 42, 42, 0.3);
 }
 
-/* MONSTER - Lilac with exciting spill animation */
+/* MONSTER - Static Lilac styling */
 .title-monster {
     color: #c8a2c8;
     position: relative;
     display: inline-block;
     text-shadow: 
-        0 0 10px rgba(200, 162, 200, 0.9),
-        0 0 30px rgba(200, 162, 200, 0.6),
-        0 0 50px rgba(200, 162, 200, 0.4),
-        3px 3px 0 #6b4f6b;
-    animation: monsterGlow 2s ease-in-out infinite;
+        0 0 8px rgba(200, 162, 200, 0.7),
+        0 0 20px rgba(200, 162, 200, 0.4),
+        2px 2px 0 #6b4f6b;
 }
 
-@keyframes monsterGlow {
-    0%, 100% { 
-        text-shadow: 
-            0 0 10px rgba(200, 162, 200, 0.9),
-            0 0 30px rgba(200, 162, 200, 0.6),
-            0 0 50px rgba(200, 162, 200, 0.4);
-        transform: scale(1);
-    }
-    50% { 
-        text-shadow: 
-            0 0 20px rgba(200, 162, 200, 1),
-            0 0 50px rgba(200, 162, 200, 0.8),
-            0 0 80px rgba(200, 162, 200, 0.5);
-        transform: scale(1.02);
-    }
-}
+/* No drip effects - static Monster title */
 
-/* Multiple drips for spilling effect */
-.title-monster::after {
-    content: '';
-    position: absolute;
-    bottom: -20px;
-    left: 15%;
-    width: 10px;
-    height: 25px;
-    background: linear-gradient(180deg, #c8a2c8 0%, #a080a0 60%, transparent 100%);
-    border-radius: 0 0 50% 50%;
-    animation: drip1 2.5s ease-in-out infinite;
-    box-shadow: 0 8px 20px rgba(200, 162, 200, 0.5);
-}
-
-.title-monster::before {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    right: 25%;
-    width: 8px;
-    height: 18px;
-    background: linear-gradient(180deg, #c8a2c8 0%, #a080a0 60%, transparent 100%);
-    border-radius: 0 0 50% 50%;
-    animation: drip2 3s ease-in-out 0.5s infinite;
-    box-shadow: 0 8px 20px rgba(200, 162, 200, 0.5);
-}
-
-/* Extra drip spans for more spill effect */
-.title-monster .drip1,
-.title-monster .drip2,
-.title-monster .drip3 {
-    position: absolute;
-    background: linear-gradient(180deg, #c8a2c8 0%, #a080a0 60%, transparent 100%);
-    border-radius: 0 0 50% 50%;
-    box-shadow: 0 8px 15px rgba(200, 162, 200, 0.4);
-}
-
-.title-monster .drip1 {
-    bottom: -22px;
-    left: 40%;
-    width: 7px;
-    height: 28px;
-    animation: drip1 2s ease-in-out 0.3s infinite;
-}
-
-.title-monster .drip2 {
-    bottom: -12px;
-    left: 60%;
-    width: 5px;
-    height: 15px;
-    animation: drip2 2.8s ease-in-out 1s infinite;
-}
-
-.title-monster .drip3 {
-    bottom: -18px;
-    right: 10%;
-    width: 6px;
-    height: 22px;
-    animation: drip1 3.2s ease-in-out 0.8s infinite;
-}
-
-@keyframes drip1 {
-    0%, 100% { 
-        height: 20px;
-        opacity: 1;
-        transform: scaleY(1);
-    }
-    40% { 
-        height: 35px;
-        opacity: 0.9;
-        transform: scaleY(1.3);
-    }
-    60% {
-        height: 38px;
-        opacity: 0.7;
-    }
-    80% {
-        height: 25px;
-        opacity: 0.8;
-    }
-}
-
-@keyframes drip2 {
-    0%, 100% { 
-        height: 15px;
-        opacity: 0.9;
-    }
-    50% { 
-        height: 30px;
-        opacity: 0.7;
-    }
-}
 
 .arena-subtitle {
     font-family: var(--font-main);
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(60, 60, 60, 0.8);
     font-size: 0.95rem;
     font-weight: 600;
     letter-spacing: 0.35em;
@@ -1193,9 +1088,9 @@ body {
    Bigger Answer Area - Student Friendly
    =========================== */
 .question-display {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    border: 2px solid rgba(200, 162, 200, 0.3);
+    border: 2px solid rgba(200, 162, 200, 0.5);
     border-radius: 16px;
     padding: 2.5rem;
     margin-bottom: 2rem;
@@ -1203,7 +1098,7 @@ body {
 }
 
 .question-display .question-text {
-    color: #ffffff;
+    color: #2a2a2a;
     font-size: 1.4rem;
     line-height: 2;
     font-weight: 400;
@@ -1220,11 +1115,11 @@ body {
 .answer-option {
     width: 100%;
     padding: 1.25rem 1.5rem;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(5px);
     border: 2px solid rgba(200, 162, 200, 0.25);
     border-radius: 12px;
-    color: rgba(255, 255, 255, 0.9);
+    color: #3a3a3a;
     font-family: var(--font-main);
     font-size: 1.15rem;
     line-height: 1.6;
@@ -1237,7 +1132,7 @@ body {
 .answer-option:hover {
     background: rgba(200, 162, 200, 0.15);
     border-color: rgba(200, 162, 200, 0.5);
-    color: #ffffff;
+    color: #2a2a2a;
     transform: translateX(8px);
     box-shadow: 0 0 20px rgba(200, 162, 200, 0.2);
 }
@@ -1262,7 +1157,7 @@ body {
 .answer-option.selected {
     background: rgba(200, 162, 200, 0.2);
     border-color: #c8a2c8;
-    color: #ffffff;
+    color: #2a2a2a;
     box-shadow: 
         0 0 25px rgba(200, 162, 200, 0.3),
         inset 0 0 30px rgba(200, 162, 200, 0.1);
@@ -1278,10 +1173,10 @@ body {
     width: 100%;
     max-width: 300px;
     padding: 1.25rem 1.5rem;
-    background: rgba(0, 0, 0, 0.5);
-    border: 2px solid rgba(200, 162, 200, 0.3);
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(200, 162, 200, 0.5);
     border-radius: 12px;
-    color: #ffffff;
+    color: #2a2a2a;
     font-size: 1.3rem;
     text-align: center;
 }
@@ -1348,7 +1243,7 @@ body {
 }
 
 .hint-display p {
-    color: rgba(255, 255, 255, 0.9);
+    color: #3a3a3a;
     font-size: 1rem;
     line-height: 1.6;
     margin: 0;
@@ -1453,7 +1348,7 @@ body {
 
 /* Challenge header updates */
 .challenge-header {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.9);
     border: 1px solid rgba(200, 162, 200, 0.2);
 }
 
@@ -1498,7 +1393,7 @@ body {
     flex-direction: column;
     gap: 0;
     padding: 0;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.7);
     border: 1px solid rgba(212, 165, 165, 0.2);
     border-radius: 4px;
     overflow: hidden;
@@ -1641,7 +1536,7 @@ body {
 
 /* Question Display - Arena Style */
 .question-display {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.7);
     border: 1px solid rgba(212, 165, 165, 0.2);
     border-radius: 4px;
     padding: 2rem;
@@ -1782,7 +1677,7 @@ body {
 .report-level {
     padding: 1.5rem;
     margin-bottom: 1.5rem;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.7);
     border: 1px solid rgba(212, 165, 165, 0.2);
     border-radius: 4px;
 }
@@ -1840,7 +1735,7 @@ body {
     text-align: left;
     margin: 1.5rem 0;
     padding: 0;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.7);
     border-radius: 4px;
     border: 1px solid rgba(212, 165, 165, 0.2);
     overflow: hidden;
