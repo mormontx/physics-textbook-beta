@@ -75,7 +75,7 @@
         <div class="monster-container">
             <!-- Arena Header -->
             <div class="arena-header">
-                <h1 class="arena-title">PHYSICS MONSTER</h1>
+                <h1 class="arena-title"><span class="title-physics">PHYSICS</span> <span class="title-monster">MONSTER</span></h1>
                 <p class="arena-subtitle">Prove Your Mastery</p>
             </div>
 
@@ -109,6 +109,16 @@
 
                 <div class="question-display" id="question-display">
                     <p class="question-text" id="question-text">Question text goes here...</p>
+                </div>
+
+                <div class="hint-container">
+                    <button class="hint-btn" id="hint-btn" onclick="showHint()">
+                        <span class="hint-icon">?</span> Need a hint?
+                    </button>
+                </div>
+                <div class="hint-display" id="hint-display" style="display: none;">
+                    <span class="hint-label">HINT:</span>
+                    <p id="hint-text"></p>
                 </div>
 
                 <div class="answer-area" id="answer-area">

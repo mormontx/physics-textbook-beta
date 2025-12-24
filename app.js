@@ -286,6 +286,10 @@ async function init() {
     // Render navigation
     renderNavigation();
     
+    // Initialize tab navigation
+    initTabNavigation();
+    initSubmitButton();
+    
     // Initialize questions panel
     initQuestionsPanel();
     
@@ -600,6 +604,9 @@ function showQuestion(index) {
     // Render answer area
     renderAnswerArea(question);
     
+    // Reset hint button
+    resetHint();
+    
     // Disable submit button
     document.getElementById('submit-btn').disabled = true;
 }
@@ -809,3 +816,35 @@ init = async function() {
     loadMonsterQuestionsData();
     loadMonsterQuotesData();
 };
+
+// ===========================
+// Hint Functionality
+// ===========================
+function showHint() {
+    const question = currentChallenge.questions[currentChallenge.currentIndex];
+    const hintDisplay = document.getElementById('hint-display');
+    const hintText = document.getElementById('hint-text');
+    const hintBtn = document.getElementById('hint-btn');
+    
+    if (question && question.hint) {
+        hintText.textContent = question.hint;
+        hintDisplay.style.display = 'block';
+        hintBtn.disabled = true;
+        hintBtn.textContent = 'Hint shown';
+    } else {
+        hintText.textContent = 'No hint available for this question. Think about the fundamental concepts!';
+        hintDisplay.style.display = 'block';
+        hintBtn.disabled = true;
+    }
+}
+
+function resetHint() {
+    const hintDisplay = document.getElementById('hint-display');
+    const hintBtn = document.getElementById('hint-btn');
+    
+    if (hintDisplay) hintDisplay.style.display = 'none';
+    if (hintBtn) {
+        hintBtn.disabled = false;
+        hintBtn.innerHTML = '<span class="hint-icon">?</span> Need a hint?';
+    }
+}
